@@ -1,0 +1,25 @@
+{
+  "name": "@practo/rev-replace-plugin",
+  "version": "1.0.0",
+  "description": "A webpack plugin to replace assets with there revisioned versions in static files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/practo/rev-replace-plugin.git"
+  },
+  "author": "Deven Vyas <deven.vyas@practo.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/practo/rev-replace-plugin/issues"
+  },
+  "homepage": "https://github.com/practo/rev-replace-plugin#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "cli-table2": "^0.2.0",
+    "debug": "^2.6.3",
+    "prettyjson": "^1.2.1"
+  }
+}
