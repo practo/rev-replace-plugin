@@ -1,6 +1,6 @@
 {
   "name": "@practo/rev-replace-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A webpack plugin to replace assets with there revisioned versions in static files",
   "main": "index.js",
   "scripts": {
