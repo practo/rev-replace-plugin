@@ -12,6 +12,7 @@ var RevReplacePlugin = function (options) {
   this.options = {};
   this.options.manifest = options.manifest;
   this.options.output = options.output;
+  this.options.revision_scripts = options.revision_scripts;
 };
 
 RevReplacePlugin.prototype.apply = function (compiler) {
@@ -23,6 +24,7 @@ RevReplacePlugin.prototype.apply = function (compiler) {
     var currentFile;
     var public_path;
     var manifest = fs.readFileSync(options.manifest).toString();
+    var rev_scripts = false || options.revision_scripts;
 
     manifest = JSON.parse(manifest);
     public_path = manifest.publicPath;
@@ -31,6 +33,11 @@ RevReplacePlugin.prototype.apply = function (compiler) {
       if(asset.search(/css|json/i) > -1) {
         targetFiles.push(manifest.assets[asset]);
       }
+
+      if(rev_scripts && asset.search(/js/i) > -1) {
+        targetFiles.push(manifest.assets[asset]);
+      }
+
       if(asset.search(/\.(jpe?g|png|gif|svg|woff2?|ico|ttf|eot|json)$/i) > -1)
         assetsToReplace[asset] = manifest.assets[asset];
     }
