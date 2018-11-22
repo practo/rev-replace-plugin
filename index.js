@@ -66,7 +66,9 @@ RevReplacePlugin.prototype.apply = function (compiler) {
       currentFile = fs.readFileSync(path.join(options.output, fileName)).toString();
       for(i in assetKeys) {
         currentAsset = assetKeys[i];
-        if(currentFile.search(currentAsset) > -1) {
+        var currentAssetMatches = currentFile.match(new RegExp(currentAsset,'g')) || [];
+        var currentAssetReplaceMatches = currentFile.match(new RegExp(public_path + assetsToReplace[currentAsset], 'g')) || [];
+        if(currentAssetMatches.length > 0 && currentAssetMatches.length !== currentAssetReplaceMatches.length) {
           table.push([currentAsset, ' => ', public_path + assetsToReplace[currentAsset]]);
           currentFile = currentFile.replace(new RegExp(currentAsset, 'g'), public_path + assetsToReplace[currentAsset]);
         }
